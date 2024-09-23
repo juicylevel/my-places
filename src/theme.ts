@@ -9,6 +9,9 @@ type ComponentsTheme = Components<Omit<Theme, 'components'>>;
 
 const MuiCssBaseline: ComponentsTheme['MuiCssBaseline'] = {
     styleOverrides: `
+        :root, body, #root {
+            height: 100%;
+        }
         input:-webkit-autofill,
         input:-webkit-autofill:hover, 
         input:-webkit-autofill:focus {

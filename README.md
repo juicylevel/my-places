@@ -1,4 +1,4 @@
-[https://github.com/juicylevel/my-places]https://github.com/juicylevel/my-places
+[https://github.com/juicylevel/my-places](https://github.com/juicylevel/my-places)
 
 # React + TypeScript + Vite
 
