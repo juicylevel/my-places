@@ -1,4 +1,3 @@
-import { forwardRef } from 'react';
 import {
     LinkProps as RouterLinkProps,
     Link as RouterDomLink,
@@ -7,8 +6,6 @@ import { Link, LinkProps } from '@mui/material';
 
 type CustomRouterLinkProps = Omit<LinkProps, 'component'> & RouterLinkProps;
 
-const RouterLink = forwardRef<any, CustomRouterLinkProps>((props, ref) => (
-    <Link ref={ref} component={RouterDomLink} {...props} />
-));
-
-export default RouterLink;
+export const RouterLink: React.FC<CustomRouterLinkProps> = (props) => (
+    <Link component={RouterDomLink} {...props} />
+);

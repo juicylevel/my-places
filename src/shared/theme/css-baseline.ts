@@ -1,13 +1,6 @@
-import {
-    Components,
-    createTheme,
-    responsiveFontSizes,
-    Theme,
-} from '@mui/material';
+import ComponentsTheme from './ComponentsTheme';
 
-type ComponentsTheme = Components<Omit<Theme, 'components'>>;
-
-const MuiCssBaseline: ComponentsTheme['MuiCssBaseline'] = {
+export const MuiCssBaseline: ComponentsTheme['MuiCssBaseline'] = {
     styleOverrides: `
         :root, body, #root {
             height: 100%;
@@ -22,11 +15,3 @@ const MuiCssBaseline: ComponentsTheme['MuiCssBaseline'] = {
         }
     `,
 };
-
-const theme = createTheme({
-    components: {
-        MuiCssBaseline,
-    },
-});
-
-export default responsiveFontSizes(theme);

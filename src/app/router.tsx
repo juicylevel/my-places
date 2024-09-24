@@ -1,13 +1,13 @@
 import { createBrowserRouter } from 'react-router-dom';
-import App from './App';
 import AboutPage from 'pages/about';
 import HomePage from 'pages/home';
 import NoMatchPage from 'pages/no-match';
+import PageLayout from 'shared/ui/layouts/page-layout';
 
 const router = createBrowserRouter(
     [
         {
-            element: <App />,
+            element: <PageLayout />,
             children: [
                 {
                     path: '/',
