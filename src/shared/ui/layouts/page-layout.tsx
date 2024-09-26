@@ -1,15 +1,19 @@
-import { Stack } from '@mui/material';
+import { AppBar, Box, Container, Toolbar, Typography } from '@mui/material';
 import { Outlet } from 'react-router-dom';
-import { RouterLink } from '../router-link';
 
 const PageLayout = () => (
-    <Stack gap={3}>
-        <Stack direction="row" gap={2} justifyContent="center">
-            <RouterLink to="/">Home</RouterLink>
-            <RouterLink to="about">About</RouterLink>
-        </Stack>
-        <Outlet />
-    </Stack>
+    <Container maxWidth="md">
+        <AppBar position="static">
+            <Toolbar>
+                <Typography variant="h6" flexGrow={1}>
+                    My Places
+                </Typography>
+            </Toolbar>
+        </AppBar>
+        <Box component="main" pt="20px">
+            <Outlet />
+        </Box>
+    </Container>
 );
 
 export default PageLayout;

@@ -1,6 +1,5 @@
 import { createBrowserRouter } from 'react-router-dom';
-import AboutPage from 'pages/about';
-import HomePage from 'pages/home';
+import PointsPage from 'pages/points';
 import NoMatchPage from 'pages/no-match';
 import PageLayout from 'shared/ui/layouts/page-layout';
 
@@ -11,11 +10,7 @@ const router = createBrowserRouter(
             children: [
                 {
                     path: '/',
-                    element: <HomePage />,
-                },
-                {
-                    path: '/about',
-                    element: <AboutPage />,
+                    element: <PointsPage />,
                 },
                 {
                     path: '*',
