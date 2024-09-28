@@ -1,6 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
 import { api } from 'shared/api/react-query-client';
-import { Point } from './point.types';
+import { Point } from '../model/point.types';
 
 export const usePointsQuery = () => {
     return useQuery<Point[]>({

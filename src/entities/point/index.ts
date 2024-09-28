@@ -1,1 +1,1 @@
-export type { Point } from './point.types';
+export type { Point } from './model/point.types';

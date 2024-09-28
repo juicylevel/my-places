@@ -1,5 +1,6 @@
-import { Card, CardContent, Skeleton, Stack } from '@mui/material';
-import { usePointsQuery } from 'entities/point/point.queries';
+import { Skeleton, Stack } from '@mui/material';
+import { usePointsQuery } from 'entities/point/api';
+import PointCard from 'entities/point/ui/point-card';
 
 const PointsPage = () => {
     const { data, isPending } = usePointsQuery();
@@ -12,9 +13,11 @@ const PointsPage = () => {
         <Stack direction="row" gap={3}>
             {data?.map((point) => {
                 return (
-                    <Card key={point.id}>
-                        <CardContent>{point.name}</CardContent>
-                    </Card>
+                    <PointCard
+                        key={point.id}
+                        data={point}
+                        sx={{ maxWidth: '300px' }}
+                    />
                 );
             })}
         </Stack>
