@@ -1,25 +1,63 @@
-import { Skeleton, Stack } from '@mui/material';
+import {
+    Skeleton,
+    Stack,
+    ToggleButton,
+    ToggleButtonGroup,
+    Toolbar,
+    Typography,
+} from '@mui/material';
+import AddLocationAltOutlinedIcon from '@mui/icons-material/AddLocationAltOutlined';
+import FormatListBulletedOutlinedIcon from '@mui/icons-material/FormatListBulletedOutlined';
 import { usePointsQuery } from 'entities/point/api';
-import PointCard from 'entities/point/ui/point-card';
+import { useState } from 'react';
+import { PointsList, PointsMap } from 'entities/point/ui';
+
+enum PointsView {
+    LIST,
+    MAP,
+}
+
+const views = {
+    [PointsView.LIST]: PointsList,
+    [PointsView.MAP]: PointsMap,
+};
 
 const PointsPage = () => {
     const { data, isPending } = usePointsQuery();
+    const [view, setView] = useState(PointsView.MAP);
+    const ViewComponent = views[view];
+
+    const handleChangeView = (
+        _: React.MouseEvent<HTMLElement>,
+        value: PointsView | null
+    ) => {
+        if (value !== null) {
+            setView(value);
+        }
+    };
 
     if (isPending) {
         return <Skeleton />;
     }
 
     return (
-        <Stack direction="row" gap={3}>
-            {data?.map((point) => {
-                return (
-                    <PointCard
-                        key={point.id}
-                        data={point}
-                        sx={{ maxWidth: '300px' }}
-                    />
-                );
-            })}
+        <Stack gap={3}>
+            <Toolbar sx={{ justifyContent: 'space-between' }} disableGutters>
+                <Typography>Filter</Typography>
+                <ToggleButtonGroup
+                    value={view}
+                    exclusive
+                    onChange={handleChangeView}
+                >
+                    <ToggleButton value={PointsView.MAP}>
+                        <AddLocationAltOutlinedIcon />
+                    </ToggleButton>
+                    <ToggleButton value={PointsView.LIST}>
+                        <FormatListBulletedOutlinedIcon />
+                    </ToggleButton>
+                </ToggleButtonGroup>
+            </Toolbar>
+            <ViewComponent data={data} />
         </Stack>
     );
 };
