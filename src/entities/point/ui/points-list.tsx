@@ -7,7 +7,7 @@ type PointsListProps = StackProps & Data<Point[]>;
 
 export const PointsList: React.FC<PointsListProps> = ({ data, ...rest }) => {
     return (
-        <Stack direction="row" gap={3} {...rest}>
+        <Stack direction="row" gap={3} flexWrap="wrap" {...rest}>
             {data?.map((point) => {
                 return (
                     <PointCard

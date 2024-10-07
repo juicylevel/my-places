@@ -7,6 +7,7 @@ import {
     CardHeader,
     cardHeaderClasses,
     CardProps,
+    Fab,
     IconButton,
     Typography,
 } from '@mui/material';
@@ -22,9 +23,9 @@ export const PointCard: React.FC<PointCardProps> = ({ data, ...rest }) => {
         <Card key={data.id} {...rest}>
             <CardHeader
                 avatar={
-                    <IconButton sx={{ bgcolor: '#f8f8f8' }}>
-                        <PlaceTwoToneIcon color="info" />
-                    </IconButton>
+                    <Fab size="small" color="secondary">
+                        <PlaceTwoToneIcon />
+                    </Fab>
                 }
                 title={data.name}
                 titleTypographyProps={{

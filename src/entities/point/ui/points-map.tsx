@@ -10,7 +10,10 @@ export const PointsMap: React.FC<PointsMapProps> = ({ data, ...rest }) => {
             <Button>Add point</Button>
             <Stack direction="row" gap={2}>
                 {data?.map((point) => (
-                    <Avatar key={point.id}>{point.coords.toString()}</Avatar>
+                    <Avatar
+                        key={point.id}
+                        sx={{ fontSize: '14px' }}
+                    >{`[${point.coords}]`}</Avatar>
                 ))}
             </Stack>
         </Stack>
