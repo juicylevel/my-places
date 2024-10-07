@@ -23,7 +23,11 @@ export const PointCard: React.FC<PointCardProps> = ({ data, ...rest }) => {
         <Card key={data.id} {...rest}>
             <CardHeader
                 avatar={
-                    <Fab size="small" color="secondary">
+                    <Fab
+                        size="small"
+                        color="secondary"
+                        sx={{ boxShadow: 'none' }}
+                    >
                         <PlaceTwoToneIcon />
                     </Fab>
                 }

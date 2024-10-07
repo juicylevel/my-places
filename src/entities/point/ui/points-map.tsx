@@ -1,4 +1,4 @@
-import { Avatar, Button, Stack, StackProps, Typography } from '@mui/material';
+import { Avatar, Button, Stack, StackProps } from '@mui/material';
 import { Data } from 'shared/ui/component-types';
 import { Point } from '../model/point.types';
 
