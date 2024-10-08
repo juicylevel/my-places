@@ -2,7 +2,7 @@ import { Box, Container } from '@mui/material';
 import { Outlet } from 'react-router-dom';
 import { Header } from 'widgets/header';
 
-const PageLayout = () => {
+export const PageLayout = () => {
     return (
         <Container maxWidth="md">
             <Header />
@@ -12,5 +12,3 @@ const PageLayout = () => {
         </Container>
     );
 };
-
-export default PageLayout;

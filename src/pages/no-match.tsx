@@ -1,7 +1,7 @@
 import { Box, Stack, Typography } from '@mui/material';
 import appLogo from '/favicon.svg';
 
-const NoMatch = () => {
+export const NoMatchPage = () => {
     return (
         <Stack gap={3} alignItems="center">
             <Box
@@ -14,5 +14,3 @@ const NoMatch = () => {
         </Stack>
     );
 };
-
-export default NoMatch;

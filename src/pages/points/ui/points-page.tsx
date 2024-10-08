@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import {
     Skeleton,
     Stack,
@@ -8,9 +9,9 @@ import {
 } from '@mui/material';
 import AddLocationAltOutlinedIcon from '@mui/icons-material/AddLocationAltOutlined';
 import FormatListBulletedOutlinedIcon from '@mui/icons-material/FormatListBulletedOutlined';
-import { usePointsQuery } from 'entities/point/api';
-import { useState } from 'react';
-import { PointsList, PointsMap } from 'entities/point/ui';
+import { usePointsQuery } from 'entities/point';
+import { PointsList } from './points-list';
+import { PointsMap } from './points-map';
 
 enum PointsView {
     LIST,
@@ -22,7 +23,7 @@ const views = {
     [PointsView.MAP]: PointsMap,
 };
 
-const PointsPage = () => {
+export const PointsPage = () => {
     const { data, isPending } = usePointsQuery();
     const [view, setView] = useState(PointsView.MAP);
     const ViewComponent = views[view];
@@ -61,5 +62,3 @@ const PointsPage = () => {
         </Stack>
     );
 };
-
-export default PointsPage;

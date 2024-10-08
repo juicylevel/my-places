@@ -1,1 +1,2 @@
-export type { Point } from './model/point.types';
+export * from './model/point.types';
+export * from './api/point.queries';

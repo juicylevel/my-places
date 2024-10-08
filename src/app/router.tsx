@@ -1,7 +1,7 @@
 import { createBrowserRouter } from 'react-router-dom';
-import PointsPage from 'pages/points';
-import NoMatchPage from 'pages/no-match';
-import PageLayout from 'shared/ui/layouts/page-layout';
+import { PageLayout } from 'pages/page-layout';
+import { PointsPage } from 'pages/points';
+import { NoMatchPage } from 'pages/no-match';
 
 const router = createBrowserRouter(
     [
