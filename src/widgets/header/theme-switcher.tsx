@@ -1,8 +1,8 @@
 import { Switch, SwitchProps, useColorScheme } from '@mui/material';
 
-type SwitchThemeModeProps = Omit<SwitchProps, 'checked' | 'onChange'>;
+type ThemeSwitcherProps = Omit<SwitchProps, 'checked' | 'onChange'>;
 
-export const SwitchThemeMode: React.FC<SwitchThemeModeProps> = (props) => {
+export const ThemeSwitcher: React.FC<ThemeSwitcherProps> = (props) => {
     const { mode, setMode } = useColorScheme();
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         const mode = event.target.checked ? 'dark' : 'light';
@@ -13,4 +13,4 @@ export const SwitchThemeMode: React.FC<SwitchThemeModeProps> = (props) => {
     );
 };
 
-export default SwitchThemeMode;
+export default ThemeSwitcher;

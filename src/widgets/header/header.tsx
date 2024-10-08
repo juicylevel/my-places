@@ -1,5 +1,5 @@
 import { AppBar, AppBarProps, Toolbar, Typography } from '@mui/material';
-import SwitchThemeMode from './switch-theme-mode';
+import ThemeSwitcherProps from './theme-switcher';
 
 export const Header: React.FC<AppBarProps> = (props) => {
     return (
@@ -8,7 +8,7 @@ export const Header: React.FC<AppBarProps> = (props) => {
                 <Typography variant="h6" flexGrow={1}>
                     My Places
                 </Typography>
-                <SwitchThemeMode />
+                <ThemeSwitcherProps />
             </Toolbar>
         </AppBar>
     );
