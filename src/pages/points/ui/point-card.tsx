@@ -13,7 +13,8 @@ import {
 } from '@mui/material';
 import { MenuWithTrigger, MenuItemIcon } from 'shared/ui/menu';
 import { Data } from 'shared/ui/component-types';
-import { Point } from '../model/point.types';
+import { Point } from 'entities/point';
+import { DeletePoint } from 'features/delete-point';
 
 type PointCardProps = Data<Point> & CardProps;
 
@@ -43,12 +44,14 @@ export const PointCard: React.FC<PointCardProps> = ({ data, ...rest }) => {
                             </IconButton>
                         }
                     >
-                        <MenuItemIcon
-                            icon={<DeleteOutlineIcon />}
-                            onClick={() => {}}
-                        >
-                            Удалить точку
-                        </MenuItemIcon>
+                        <DeletePoint data={data}>
+                            <MenuItemIcon
+                                icon={<DeleteOutlineIcon />}
+                                onClick={() => {}}
+                            >
+                                Удалить точку
+                            </MenuItemIcon>
+                        </DeletePoint>
                     </MenuWithTrigger>
                 }
                 sx={{

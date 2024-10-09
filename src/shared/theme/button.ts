@@ -1,4 +1,4 @@
-import ComponentsTheme from './ComponentsTheme';
+import { ComponentsTheme } from './components-theme';
 
 export const MuiButton: ComponentsTheme['MuiButton'] = {
     defaultProps: {
