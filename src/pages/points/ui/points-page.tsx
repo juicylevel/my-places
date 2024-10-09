@@ -25,12 +25,12 @@ const views = {
 
 export const PointsPage = () => {
     const { data, isPending } = usePointsQuery();
-    const [view, setView] = useState(PointsView.MAP);
+    const [view, setView] = useState(PointsView.LIST);
     const ViewComponent = views[view];
 
     const handleChangeView = (
         _: React.MouseEvent<HTMLElement>,
-        value: PointsView | null
+        value: PointsView | null,
     ) => {
         if (value !== null) {
             setView(value);

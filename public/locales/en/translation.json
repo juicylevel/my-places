@@ -1,0 +1,21 @@
+{
+    "appTitle": "My places",
+    "point": {
+        "actions": {
+            "create": {
+                "title": "Add point"
+            },
+            "delete": {
+                "title": "Delete point",
+                "confirm": {
+                    "title": "Deleting a point",
+                    "content": "Are you sure you want to delete the point \"{{name}}\"?",
+                    "okText": "Yes",
+                    "cancelText": "No"
+                },
+                "success": "The point was successfully deleted",
+                "error": "An error occurred while deleting the point"
+            }
+        }
+    }
+}

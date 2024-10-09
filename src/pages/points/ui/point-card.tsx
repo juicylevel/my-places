@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next';
 import PlaceTwoToneIcon from '@mui/icons-material/PlaceTwoTone';
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
@@ -9,12 +10,22 @@ import {
     CardProps,
     Fab,
     IconButton,
+    MenuItemProps,
     Typography,
 } from '@mui/material';
+import { DeletePoint } from 'features/delete-point';
+import { Point } from 'entities/point';
 import { MenuWithTrigger, MenuItemIcon } from 'shared/ui/menu';
 import { Data } from 'shared/ui/component-types';
-import { Point } from 'entities/point';
-import { DeletePoint } from 'features/delete-point';
+
+const DeletePointMenuItem: React.FC<MenuItemProps> = (props) => {
+    const { t } = useTranslation();
+    return (
+        <MenuItemIcon icon={<DeleteOutlineIcon />} {...props}>
+            {t('point.actions.delete.title')}
+        </MenuItemIcon>
+    );
+};
 
 type PointCardProps = Data<Point> & CardProps;
 
@@ -45,12 +56,7 @@ export const PointCard: React.FC<PointCardProps> = ({ data, ...rest }) => {
                         }
                     >
                         <DeletePoint data={data}>
-                            <MenuItemIcon
-                                icon={<DeleteOutlineIcon />}
-                                onClick={() => {}}
-                            >
-                                Удалить точку
-                            </MenuItemIcon>
+                            <DeletePointMenuItem />
                         </DeletePoint>
                     </MenuWithTrigger>
                 }

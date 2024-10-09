@@ -1,28 +1,32 @@
+import { ReactElement } from 'react';
+import { useTranslation } from 'react-i18next';
 import { useDialogs, useNotifications } from '@toolpad/core';
 import { Point, useDeletePoint, useInvalidatePoints } from 'entities/point';
-import { ReactElement } from 'react';
 import { Data } from 'shared/ui/component-types';
 import { useClickableElement } from 'shared/ui/hooks';
 import { dialogAsyncCloseHandler } from 'shared/ui/lib/dialog-async-close-handler';
+
+const tPrefix = 'point.actions.delete';
 
 type DeletePointProps = Data<Point> & {
     children: ReactElement;
 };
 
 export const DeletePoint: React.FC<DeletePointProps> = ({ data, children }) => {
+    const { t } = useTranslation();
     const dialogs = useDialogs();
     const notifications = useNotifications();
     const invalidatePoints = useInvalidatePoints();
 
     const { mutateAsync: deletePoint } = useDeletePoint({
         onSuccess: () => {
-            notifications.show('Точка успешно удалена', {
+            notifications.show(t(`${tPrefix}.success`), {
                 severity: 'success',
             });
             invalidatePoints();
         },
         onError: () => {
-            notifications.show('Произошла ошибка при удалении точки', {
+            notifications.show(t(`${tPrefix}.error`), {
                 severity: 'error',
             });
         },
@@ -30,11 +34,11 @@ export const DeletePoint: React.FC<DeletePointProps> = ({ data, children }) => {
 
     const triggerElement = useClickableElement(children, async () => {
         await dialogs.confirm(
-            `Вы действительно хотите удалить точку "${data?.name}"?`,
+            t(`${tPrefix}.confirm.content`, { name: data?.name }),
             {
-                title: 'Удаление точки',
-                cancelText: 'Нет',
-                okText: 'Да',
+                title: t(`${tPrefix}.confirm.title`),
+                cancelText: t(`${tPrefix}.confirm.cancelText`),
+                okText: t(`${tPrefix}.confirm.okText`),
                 onClose: dialogAsyncCloseHandler(
                     async () => await deletePoint(data?.id!),
                 ),
