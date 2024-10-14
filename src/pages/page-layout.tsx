@@ -4,9 +4,9 @@ import { Header } from 'widgets/header';
 
 export const PageLayout = () => {
     return (
-        <Container maxWidth="md">
+        <Container maxWidth="md" disableGutters>
             <Header />
-            <Box component="main" pt="20px">
+            <Box component="main" p={3}>
                 <Outlet />
             </Box>
         </Container>

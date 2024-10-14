@@ -1,6 +1,7 @@
 import { useTranslation } from 'react-i18next';
 import { Button, ButtonProps, Stack, StackProps } from '@mui/material';
 import AddIcon from '@mui/icons-material/Add';
+import { CreatePoint } from 'features/create-point';
 import { Point } from 'entities/point';
 import { Data } from 'shared/ui/component-types';
 import { PointCard } from './point-card';
@@ -19,7 +20,9 @@ type PointsListProps = StackProps & Data<Point[]>;
 export const PointsList: React.FC<PointsListProps> = ({ data, ...rest }) => {
     return (
         <Stack gap={3} {...rest}>
-            <AddButton />
+            <CreatePoint>
+                <AddButton />
+            </CreatePoint>
             {data?.map((point) => {
                 return <PointCard key={point.id} data={point} />;
             })}
