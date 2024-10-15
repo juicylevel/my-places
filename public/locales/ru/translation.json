@@ -1,6 +1,21 @@
 {
     "appTitle": "Мои места",
+    "actions": {
+        "ok": "Ок",
+        "cancel": "Отмена",
+        "save": "Сохранить"
+    },
     "point": {
+        "form": {
+            "create": "Новая точка"
+        },
+        "fields": {
+            "activityType": "Что тут было?",
+            "title": "Название",
+            "desc": "Описание",
+            "latitude": "Широта",
+            "longitude": "Долгота"
+        },
         "actions": {
             "create": {
                 "title": "Новая точка"
@@ -16,6 +31,16 @@
                 "success": "Точка успешно удалена",
                 "error": "Произошла ошибка при удалении точки"
             }
+        }
+    },
+    "activity": {
+        "type": {
+            "FISHING": "Рыбалка",
+            "MUSHROOM_PICKING": "Сбор грибов",
+            "BERRY_PICKING": "Сбор ягод",
+            "CYCLING": "Велосипедизм",
+            "REST": "Отдых",
+            "SNACK": "Перекус"
         }
     }
 }

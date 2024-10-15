@@ -11,6 +11,7 @@ import {
 } from '@mui/material';
 import { TransitionProps } from '@mui/material/transitions';
 import React, { forwardRef } from 'react';
+import { useTranslation } from 'react-i18next';
 
 const Transition = forwardRef(function Transition(
     props: TransitionProps & {
@@ -25,12 +26,14 @@ export type FullscreenDialogProps = DialogProps & {
     title: string;
     okText?: string;
     cancelText?: string;
+    submitForm?: string;
 };
 
 export const FullscreenDialog: React.FC<FullscreenDialogProps> = ({
     title,
-    okText = 'Ok',
-    cancelText = 'Cancel',
+    okText,
+    cancelText,
+    submitForm,
     children,
     onClose,
     ...rest
@@ -38,6 +41,7 @@ export const FullscreenDialog: React.FC<FullscreenDialogProps> = ({
     const handleClose = (event: React.MouseEvent) => {
         onClose?.(event, 'escapeKeyDown');
     };
+    const { t } = useTranslation();
     return (
         <Dialog
             {...rest}
@@ -56,9 +60,15 @@ export const FullscreenDialog: React.FC<FullscreenDialogProps> = ({
                 <DialogContent>{children}</DialogContent>
                 <DialogActions>
                     <Button variant="text" onClick={handleClose}>
-                        {cancelText}
+                        {cancelText || t('actions.cancel')}
                     </Button>
-                    <Button variant="text">{okText}</Button>
+                    <Button
+                        type={submitForm ? 'submit' : 'button'}
+                        form={submitForm}
+                        variant="text"
+                    >
+                        {okText || t('actions.ok')}
+                    </Button>
                 </DialogActions>
             </Container>
         </Dialog>

@@ -1,6 +1,21 @@
 {
     "appTitle": "My places",
+    "actions": {
+        "ok": "Ok",
+        "cancel": "Cancel",
+        "save": "Save"
+    },
     "point": {
+        "form": {
+            "create": "New point"
+        },
+        "fields": {
+            "activityType": "Activity type",
+            "title": "Point name",
+            "desc": "Description",
+            "latitude": "Latitude",
+            "longitude": "Longitude"
+        },
         "actions": {
             "create": {
                 "title": "Add point"
@@ -16,6 +31,16 @@
                 "success": "The point was successfully deleted",
                 "error": "An error occurred while deleting the point"
             }
+        }
+    },
+    "activity": {
+        "type": {
+            "FISHING": "Fishing",
+            "MUSHROOM_PICKING": "Mushroom picking",
+            "BERRY_PICKING": "Berry picking",
+            "CYCLING": "Cycling",
+            "REST": "Rest",
+            "SNACK": "Snack"
         }
     }
 }
