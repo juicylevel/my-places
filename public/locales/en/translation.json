@@ -11,14 +11,18 @@
         },
         "fields": {
             "activityType": "Activity type",
-            "title": "Point name",
+            "name": "Point name",
             "desc": "Description",
-            "latitude": "Latitude",
-            "longitude": "Longitude"
+            "coords": {
+                "lat": "Latitude",
+                "long": "Longitude"
+            }
         },
         "actions": {
             "create": {
-                "title": "Add point"
+                "title": "Add point",
+                "success": "The point was successfully created",
+                "error": "An error occurred while creating the point"
             },
             "delete": {
                 "title": "Delete point",

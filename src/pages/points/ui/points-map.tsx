@@ -1,6 +1,6 @@
 import { Avatar, Button, Stack, StackProps } from '@mui/material';
+import { Point } from 'entities/point';
 import { Data } from 'shared/ui/component-types';
-import { Point } from '../model/point.types';
 
 type PointsMapProps = StackProps & Data<Point[]>;
 
@@ -10,10 +10,9 @@ export const PointsMap: React.FC<PointsMapProps> = ({ data, ...rest }) => {
             <Button>Add point</Button>
             <Stack direction="row" gap={2}>
                 {data?.map((point) => (
-                    <Avatar
-                        key={point.id}
-                        sx={{ fontSize: '14px' }}
-                    >{`[${point.coords}]`}</Avatar>
+                    <Avatar key={point.id} sx={{ fontSize: '12px' }}>
+                        {point.id}
+                    </Avatar>
                 ))}
             </Stack>
         </Stack>

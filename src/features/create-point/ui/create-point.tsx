@@ -6,6 +6,10 @@ import { FullscreenDialog } from 'shared/ui/fullscreen-dialog';
 import { useClickableElement, useDialog } from 'shared/ui/hooks';
 import { useTranslation } from 'react-i18next';
 import { ActivityType } from 'entities/activity/model/activity-type';
+import { Point, useCreatePoint, useInvalidatePoints } from 'entities/point';
+import { useNotifications } from '@toolpad/core';
+
+const tPrefix = 'point.actions.create';
 
 type CreatePointProps = {
     children: ReactElement;
@@ -15,6 +19,24 @@ export const CreatePoint: React.FC<CreatePointProps> = ({ children }) => {
     const { onOpen, ...modalProps } = useDialog();
     const triggerElement = useClickableElement(children, onOpen);
     const { t } = useTranslation();
+    const notifications = useNotifications();
+    const invalidatePoints = useInvalidatePoints();
+
+    const { mutateAsync: create } = useCreatePoint({
+        onSuccess: () => {
+            notifications.show(t(`${tPrefix}.success`), {
+                severity: 'success',
+            });
+            invalidatePoints();
+            modalProps.onClose();
+        },
+        onError: () => {
+            notifications.show(t(`${tPrefix}.error`), {
+                severity: 'error',
+            });
+        },
+    });
+
     return (
         <>
             {triggerElement}
@@ -24,11 +46,11 @@ export const CreatePoint: React.FC<CreatePointProps> = ({ children }) => {
                 submitForm="point-form"
                 okText={t('actions.save')}
             >
-                <FormContainer
+                <FormContainer<Omit<Point, 'id'>>
                     FormProps={{
                         id: 'point-form',
                     }}
-                    onSuccess={(data) => console.log(data)}
+                    onSuccess={(values) => create(values)}
                 >
                     <Grid container spacing={2}>
                         <Grid size={12}>
@@ -51,8 +73,8 @@ export const CreatePoint: React.FC<CreatePointProps> = ({ children }) => {
                         </Grid>
                         <Grid size={12}>
                             <TextFieldElement
-                                name="title"
-                                label={t('point.fields.title')}
+                                name="name"
+                                label={t('point.fields.name')}
                                 fullWidth
                                 required
                                 rules={{
@@ -75,8 +97,8 @@ export const CreatePoint: React.FC<CreatePointProps> = ({ children }) => {
                         </Grid>
                         <Grid size={6}>
                             <TextFieldElement
-                                name="latitude"
-                                label={t('point.fields.latitude')}
+                                name="coords.lat"
+                                label={t('point.fields.coords.lat')}
                                 fullWidth
                                 required
                                 rules={{
@@ -86,8 +108,8 @@ export const CreatePoint: React.FC<CreatePointProps> = ({ children }) => {
                         </Grid>
                         <Grid size={6}>
                             <TextFieldElement
-                                name="longitude"
-                                label={t('point.fields.longitude')}
+                                name="coords.long"
+                                label={t('point.fields.coords.long')}
                                 fullWidth
                                 required
                                 rules={{
