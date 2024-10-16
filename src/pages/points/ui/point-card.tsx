@@ -42,6 +42,7 @@ const PointMenuItem: React.FC<PointMenuItemProps> = ({
 type PointCardProps = Data<Point> & CardProps;
 
 export const PointCard: React.FC<PointCardProps> = ({ data, ...rest }) => {
+    const { t } = useTranslation();
     if (!data) return null;
     return (
         <Card key={data.id} {...rest}>
@@ -56,6 +57,7 @@ export const PointCard: React.FC<PointCardProps> = ({ data, ...rest }) => {
                     </Fab>
                 }
                 title={data.name}
+                subheader={t(`activity.type.${data.activityType}`)}
                 titleTypographyProps={{
                     variant: 'subtitle1',
                 }}

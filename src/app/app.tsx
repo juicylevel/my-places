@@ -4,7 +4,7 @@ import { QueryClientProvider } from '@tanstack/react-query';
 import { DialogsProvider, NotificationsProvider } from '@toolpad/core';
 import { queryClient } from 'shared/api/react-query-client';
 import { notificationsConfig } from 'shared/config/notifications-config';
-import theme from './theme';
+import theme from 'shared/ui/theme';
 import router from './router';
 
 export const App = () => {
