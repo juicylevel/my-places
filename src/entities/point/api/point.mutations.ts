@@ -1,16 +1,17 @@
 import { useMutation, UseMutationOptions } from '@tanstack/react-query';
 import { api } from 'shared/api/react-query-client';
-import { Point } from '../model/point.types';
+import { CreatePointValues, UpdatePointValues } from '../model/point.types';
 
-type UsePointMutationOptions = Omit<
-    UseMutationOptions<unknown, Error, unknown>,
+type UsePointMutationOptions<Payload = unknown> = Omit<
+    UseMutationOptions<unknown, Error, Payload>,
     'mutationFn'
 >;
 
-export const useCreatePoint = (options?: UsePointMutationOptions) => {
+export const useCreatePoint = (
+    options?: UsePointMutationOptions<CreatePointValues>,
+) => {
     return useMutation({
-        //  TODO: using Omit
-        mutationFn: async (data: Omit<Point, 'id'>) => {
+        mutationFn: async (data) => {
             await api.post(`/points`, data);
         },
         ...options,
@@ -19,11 +20,10 @@ export const useCreatePoint = (options?: UsePointMutationOptions) => {
 
 export const useUpdatePoint = (
     id: string,
-    options?: UsePointMutationOptions,
+    options?: UsePointMutationOptions<UpdatePointValues>,
 ) => {
     return useMutation({
-        //  TODO: using Omit
-        mutationFn: async (data: Omit<Point, 'id'>) => {
+        mutationFn: async (data) => {
             await api.put(`/points/${id}`, data);
         },
         ...options,

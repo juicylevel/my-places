@@ -2,7 +2,11 @@ import { ReactElement } from 'react';
 import { FullscreenDialog } from 'shared/ui/fullscreen-dialog';
 import { useClickableElement, useDialog } from 'shared/ui/hooks';
 import { useTranslation } from 'react-i18next';
-import { useCreatePoint, useInvalidatePoints } from 'entities/point';
+import {
+    useCreatePoint,
+    useInvalidatePoints,
+    CreatePointValues,
+} from 'entities/point';
 import { useNotifications } from '@toolpad/core';
 import { PointForm } from 'entities/point/ui/point-form';
 
@@ -43,7 +47,9 @@ export const CreatePoint: React.FC<CreatePointProps> = ({ children }) => {
                 submitForm="point-form"
                 okText={t('actions.save')}
             >
-                <PointForm onSuccess={(values) => create(values)} />
+                <PointForm<CreatePointValues>
+                    onSuccess={(values) => create(values)}
+                />
             </FullscreenDialog>
         </>
     );

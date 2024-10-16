@@ -1,7 +1,6 @@
 import { ActivityType } from 'entities/activity/model/activity-type';
 
-export type Point = {
-    id: string;
+export type CreatePointValues = {
     coords: {
         lat: number;
         long: number;
@@ -9,4 +8,11 @@ export type Point = {
     name: string;
     desc: string;
     activityType: ActivityType;
+};
+
+export type UpdatePointValues = CreatePointValues;
+
+export type Point = CreatePointValues & {
+    id: string;
+    createdAt: string;
 };

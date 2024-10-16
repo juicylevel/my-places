@@ -6,14 +6,12 @@ import {
     TextFieldElement,
 } from 'react-hook-form-mui';
 import { ActivityType } from 'entities/activity/model/activity-type';
-import { Point } from 'entities/point/model/point.types';
 import { useTranslation } from 'react-i18next';
 
-export const PointForm: React.FC<FormContainerProps> = (props) => {
+export function PointForm<FormValues>(props: FormContainerProps<FormValues>) {
     const { t } = useTranslation();
-    // TODO: using Omit
     return (
-        <FormContainer<Omit<Point, 'id'>>
+        <FormContainer<FormValues>
             {...props}
             FormProps={{
                 id: 'point-form',
@@ -88,4 +86,4 @@ export const PointForm: React.FC<FormContainerProps> = (props) => {
             </Grid>
         </FormContainer>
     );
-};
+}
