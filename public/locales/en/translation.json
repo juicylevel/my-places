@@ -7,7 +7,8 @@
     },
     "point": {
         "form": {
-            "create": "New point"
+            "create": "New point",
+            "update": "Editing a point"
         },
         "fields": {
             "activityType": "Activity type",
@@ -23,6 +24,11 @@
                 "title": "Add point",
                 "success": "The point was successfully created",
                 "error": "An error occurred while creating the point"
+            },
+            "update": {
+                "title": "Edit point",
+                "success": "The point was successfully updated",
+                "error": "An error occurred while updating the point"
             },
             "delete": {
                 "title": "Delete point",

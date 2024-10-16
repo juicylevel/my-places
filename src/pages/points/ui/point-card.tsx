@@ -1,6 +1,7 @@
 import { useTranslation } from 'react-i18next';
 import PlaceTwoToneIcon from '@mui/icons-material/PlaceTwoTone';
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
+import EditOffOutlinedIcon from '@mui/icons-material/EditOutlined';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import {
     Card,
@@ -10,19 +11,30 @@ import {
     CardProps,
     Fab,
     IconButton,
-    MenuItemProps,
     Typography,
 } from '@mui/material';
 import { DeletePoint } from 'features/delete-point';
 import { Point } from 'entities/point';
-import { MenuWithTrigger, MenuItemIcon } from 'shared/ui/menu';
+import {
+    MenuWithTrigger,
+    MenuItemIcon,
+    MenuItemIconProps,
+} from 'shared/ui/menu';
 import { Data } from 'shared/ui/component-types';
+import { UpdatePoint } from 'features/update-point';
 
-const DeletePointMenuItem: React.FC<MenuItemProps> = (props) => {
+type PointMenuItemProps = MenuItemIconProps & {
+    actionKey: string;
+};
+
+const PointMenuItem: React.FC<PointMenuItemProps> = ({
+    actionKey,
+    ...rest
+}) => {
     const { t } = useTranslation();
     return (
-        <MenuItemIcon icon={<DeleteOutlineIcon />} {...props}>
-            {t('point.actions.delete.title')}
+        <MenuItemIcon {...rest}>
+            {t(`point.actions.${actionKey}.title`)}
         </MenuItemIcon>
     );
 };
@@ -49,14 +61,24 @@ export const PointCard: React.FC<PointCardProps> = ({ data, ...rest }) => {
                 }}
                 action={
                     <MenuWithTrigger
+                        keepMounted
                         trigger={
                             <IconButton>
                                 <MoreVertIcon />
                             </IconButton>
                         }
                     >
+                        <UpdatePoint data={data}>
+                            <PointMenuItem
+                                icon={<EditOffOutlinedIcon />}
+                                actionKey="update"
+                            />
+                        </UpdatePoint>
                         <DeletePoint data={data}>
-                            <DeletePointMenuItem />
+                            <PointMenuItem
+                                icon={<DeleteOutlineIcon />}
+                                actionKey="delete"
+                            />
                         </DeletePoint>
                     </MenuWithTrigger>
                 }

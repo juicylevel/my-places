@@ -17,6 +17,19 @@ export const useCreatePoint = (options?: UsePointMutationOptions) => {
     });
 };
 
+export const useUpdatePoint = (
+    id: string,
+    options?: UsePointMutationOptions,
+) => {
+    return useMutation({
+        //  TODO: using Omit
+        mutationFn: async (data: Omit<Point, 'id'>) => {
+            await api.put(`/points/${id}`, data);
+        },
+        ...options,
+    });
+};
+
 export const useDeletePoint = (options?: UsePointMutationOptions) => {
     return useMutation({
         mutationFn: async (id: string) => {

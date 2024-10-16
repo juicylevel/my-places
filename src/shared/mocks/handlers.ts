@@ -24,14 +24,19 @@ export const handlers = [
     }),
     http.post('/points', async ({ request }) => {
         await delay();
+        const payload = (await request.json()) as object;
         const id = `point${points.size + 1}`;
-        // TODO: using Omit
-        const newPoint = {
-            id,
-            ...((await request.json()) as Omit<Point, 'id'>),
-        };
+        const newPoint = { id, ...payload } as Point;
         points.set(id, newPoint);
         return HttpResponse.json<Point>(newPoint);
+    }),
+    http.put('/points/:id', async ({ params, request }) => {
+        await delay();
+        const payload = (await request.json()) as object;
+        const id = params?.id as string;
+        const updatedPoint = { ...points.get(id), ...payload } as Point;
+        points.set(id, updatedPoint);
+        return HttpResponse.json<Point>(updatedPoint);
     }),
     http.delete('/points/:id', async ({ params }) => {
         await delay();

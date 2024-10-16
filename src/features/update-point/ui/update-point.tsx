@@ -2,24 +2,25 @@ import { ReactElement } from 'react';
 import { FullscreenDialog } from 'shared/ui/fullscreen-dialog';
 import { useClickableElement, useDialog } from 'shared/ui/hooks';
 import { useTranslation } from 'react-i18next';
-import { useCreatePoint, useInvalidatePoints } from 'entities/point';
+import { Point, useInvalidatePoints, useUpdatePoint } from 'entities/point';
 import { useNotifications } from '@toolpad/core';
 import { PointForm } from 'entities/point/ui/point-form';
+import { Data } from 'shared/ui/component-types';
 
-const tPrefix = 'point.actions.create';
+const tPrefix = 'point.actions.update';
 
-type CreatePointProps = {
+type UpdatePointProps = Data<Point> & {
     children: ReactElement;
 };
 
-export const CreatePoint: React.FC<CreatePointProps> = ({ children }) => {
+export const UpdatePoint: React.FC<UpdatePointProps> = ({ data, children }) => {
     const { onOpen, ...modalProps } = useDialog();
     const triggerElement = useClickableElement(children, onOpen);
     const { t } = useTranslation();
     const notifications = useNotifications();
     const invalidatePoints = useInvalidatePoints();
 
-    const { mutateAsync: create } = useCreatePoint({
+    const { mutateAsync: update } = useUpdatePoint(data?.id!, {
         onSuccess: () => {
             notifications.show(t(`${tPrefix}.success`), {
                 severity: 'success',
@@ -39,11 +40,14 @@ export const CreatePoint: React.FC<CreatePointProps> = ({ children }) => {
             {triggerElement}
             <FullscreenDialog
                 {...modalProps}
-                title={t('point.form.create')}
+                title={t('point.form.update')}
                 submitForm="point-form"
                 okText={t('actions.save')}
             >
-                <PointForm onSuccess={(values) => create(values)} />
+                <PointForm
+                    defaultValues={data}
+                    onSuccess={(values) => update(values)}
+                />
             </FullscreenDialog>
         </>
     );
