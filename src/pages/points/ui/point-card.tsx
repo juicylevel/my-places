@@ -13,15 +13,14 @@ import {
     IconButton,
     Typography,
 } from '@mui/material';
-import { DeletePoint } from 'features/delete-point';
+import { UpdatePoint, DeletePoint } from 'features/point';
 import { Point } from 'entities/point';
 import {
     MenuWithTrigger,
     MenuItemIcon,
     MenuItemIconProps,
 } from 'shared/ui/menu';
-import { Data } from 'shared/ui/component-types';
-import { UpdatePoint } from 'features/update-point';
+import { Data } from 'shared/ui/types';
 
 type PointMenuItemProps = MenuItemIconProps & {
     actionKey: string;

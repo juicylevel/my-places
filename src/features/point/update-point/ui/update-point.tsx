@@ -1,11 +1,11 @@
 import { ReactElement } from 'react';
-import { FullscreenDialog } from 'shared/ui/fullscreen-dialog';
-import { useClickableElement, useDialog } from 'shared/ui/hooks';
+import { FullscreenDialog } from 'shared/ui/modal';
+import { useClickableElement, useDialog } from 'shared/lib/hooks';
 import { useTranslation } from 'react-i18next';
 import { Point, useInvalidatePoints, useUpdatePoint } from 'entities/point';
 import { useNotifications } from '@toolpad/core';
 import { PointForm } from 'entities/point/ui/point-form';
-import { Data } from 'shared/ui/component-types';
+import { Data } from 'shared/ui/types';
 
 const tPrefix = 'point.actions.update';
 

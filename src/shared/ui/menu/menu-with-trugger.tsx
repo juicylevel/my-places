@@ -1,7 +1,7 @@
 import { IconButton, Menu, MenuProps } from '@mui/material';
 import { Menu as Sandwich } from '@mui/icons-material';
 import React, { Fragment, ReactElement } from 'react';
-import { useClickableElement } from '../hooks';
+import { useClickableElement } from 'shared/lib/hooks';
 
 export type MenuWithTriggerProps = Omit<MenuProps, 'open' | 'anchorEl'> & {
     trigger?: ReactElement;
@@ -16,7 +16,7 @@ const DefaultTrigger = (
 export const MenuWithTrigger = React.forwardRef<any, MenuWithTriggerProps>(
     ({ trigger = DefaultTrigger, ...rest }, ref) => {
         const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(
-            null
+            null,
         );
         const open = !!anchorEl;
 
@@ -45,5 +45,5 @@ export const MenuWithTrigger = React.forwardRef<any, MenuWithTriggerProps>(
                 />
             </Fragment>
         );
-    }
+    },
 );

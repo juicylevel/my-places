@@ -2,9 +2,9 @@ import { ReactElement } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useDialogs, useNotifications } from '@toolpad/core';
 import { Point, useDeletePoint, useInvalidatePoints } from 'entities/point';
-import { Data } from 'shared/ui/component-types';
-import { useClickableElement } from 'shared/ui/hooks';
-import { dialogAsyncCloseHandler } from 'shared/ui/lib/dialog-async-close-handler';
+import { Data } from 'shared/ui/types';
+import { useClickableElement } from 'shared/lib/hooks';
+import { dialogAsyncCloseHandler } from 'shared/lib/dialog-async-close-handler';
 
 const tPrefix = 'point.actions.delete';
 

@@ -1,5 +1,5 @@
 import { useQuery, useQueryClient } from '@tanstack/react-query';
-import { api } from 'shared/api/react-query-client';
+import { api } from 'shared/api';
 import { Point } from '../model/point.types';
 import { useCallback } from 'react';
 

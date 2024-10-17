@@ -1,6 +1,6 @@
 import { Typography, TypographyProps } from '@mui/material';
 import dayjs from 'dayjs';
-import { DATE_TIME_FORMAT } from './lib/format/date-format';
+import { DATE_TIME_FORMAT } from 'shared/config';
 
 export type DateOutputProps = TypographyProps & {
     value: string;

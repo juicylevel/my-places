@@ -1,6 +1,6 @@
 import { ReactElement } from 'react';
-import { FullscreenDialog } from 'shared/ui/fullscreen-dialog';
-import { useClickableElement, useDialog } from 'shared/ui/hooks';
+import { FullscreenDialog } from 'shared/ui/modal';
+import { useClickableElement, useDialog } from 'shared/lib/hooks';
 import { useTranslation } from 'react-i18next';
 import {
     useCreatePoint,

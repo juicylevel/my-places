@@ -2,7 +2,7 @@ import { RouterProvider } from 'react-router-dom';
 import { CssBaseline, ThemeProvider } from '@mui/material';
 import { QueryClientProvider } from '@tanstack/react-query';
 import { DialogsProvider, NotificationsProvider } from '@toolpad/core';
-import { queryClient } from 'shared/api/react-query-client';
+import { queryClient } from 'shared/api';
 import { notificationsConfig } from 'shared/config/notifications-config';
 import theme from 'shared/ui/theme';
 import router from './router';

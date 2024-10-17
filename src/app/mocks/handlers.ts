@@ -1,4 +1,4 @@
-import { ActivityType } from 'entities/activity/model/activity-type';
+import { ActivityType } from 'entities/activity';
 import { Point, CreatePointValues, UpdatePointValues } from 'entities/point';
 import { http, HttpResponse, delay } from 'msw';
 import dayjs from 'dayjs';

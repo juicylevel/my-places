@@ -1,9 +1,9 @@
 import { useTranslation } from 'react-i18next';
 import { Button, ButtonProps, Stack, StackProps } from '@mui/material';
 import AddIcon from '@mui/icons-material/Add';
-import { CreatePoint } from 'features/create-point';
+import { CreatePoint } from 'features/point';
 import { Point } from 'entities/point';
-import { Data } from 'shared/ui/component-types';
+import { Data } from 'shared/ui/types';
 import { PointCard } from './point-card';
 
 export const AddButton: React.FC<ButtonProps> = (props) => {

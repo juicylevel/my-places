@@ -5,7 +5,7 @@ import {
     FormContainerProps,
     TextFieldElement,
 } from 'react-hook-form-mui';
-import { ActivityType } from 'entities/activity/model/activity-type';
+import { ActivityType } from 'entities/activity';
 import { useTranslation } from 'react-i18next';
 
 export function PointForm<FormValues>(props: FormContainerProps<FormValues>) {

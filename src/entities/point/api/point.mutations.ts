@@ -30,9 +30,9 @@ export const useUpdatePoint = (
     });
 };
 
-export const useDeletePoint = (options?: UsePointMutationOptions) => {
+export const useDeletePoint = (options?: UsePointMutationOptions<string>) => {
     return useMutation({
-        mutationFn: async (id: string) => {
+        mutationFn: async (id) => {
             await api.delete(`/points/${id}`);
         },
         ...options,
